@@ -2,7 +2,6 @@
 
 O que é o Projeto Cineminha?
 =====================
-The Equinox Project is a open-source project written in .NET Core
 O projeto Cineminha é um projeto open-source escrito em .NET Core
 
 ## Dê uma estrela! :star:
