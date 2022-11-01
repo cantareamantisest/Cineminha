@@ -1,0 +1,26 @@
+﻿<nav class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+        <!-- Add icons to the links using the .nav-icon class
+     with font-awesome or any other icon font library -->
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="MovieRoom" asp-action="Index">
+                <i class="nav-icon fas fa-users"></i>
+                <p>Salas</p>
+            </a>            
+        </li>
+
+         <li class="nav-item">
+            <a class="nav-link" asp-controller="MovieManager" asp-action="Index">
+                <i class="nav-icon fas fa-camera"></i>
+                <p>Filmes</p>
+            </a>            
+        </li>
+
+         <li class="nav-item">
+            <a class="nav-link" asp-controller="SessionManager" asp-action="Index">
+                <i class="nav-icon fas fa-calendar-check"></i>
+                <p>Sessões</p>
+            </a>            
+        </li>
+    </ul>
+</nav>

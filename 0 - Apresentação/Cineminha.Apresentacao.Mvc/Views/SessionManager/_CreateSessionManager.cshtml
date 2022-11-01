@@ -1,0 +1,62 @@
+﻿@model Cineminha.Aplicacao.ViewModels.SessaoViewModel
+
+<div class="modal fade" id="addSessionManager" tabindex="-1" role="dialog" aria-labelledby="addSessionManagerLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="addSessionManagerLabel">Adicionar Sessão</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Create" method="post" asp-antiforgery="true">
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                   <div class="form-group">
+                        <label asp-for="Data"></label>
+                        <input asp-for="Data" class="form-control" />
+                        <span asp-validation-for="Data" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label asp-for="HoraInicio"></label>
+                        <input asp-for="HoraInicio" class="form-control" />
+                        <span asp-validation-for="HoraInicio" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ValorIngresso"></label>
+                        <input asp-for="ValorIngresso" class="form-control" />
+                        <span asp-validation-for="ValorIngresso" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TipoAnimacao"></label>
+                        <select asp-for="TipoAnimacao" asp-items="@Model.SelectListTipoAnimacao" class="form-control" ></select>
+                        <span asp-validation-for="TipoAnimacao" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TipoAudio"></label>
+                        <select asp-for="TipoAudio" asp-items="@Model.SelectListTipoAudio" class="form-control" ></select>
+                        <span asp-validation-for="TipoAudio" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="IdFilme"></label>
+                        <select asp-for="IdFilme" asp-items="@Model.SelectListFilme" class="form-control" ></select>
+                        <span asp-validation-for="IdFilme" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="IdSala"></label>
+                        <select asp-for="IdSala" asp-items="@Model.SelectListSala" class="form-control" ></select>
+                        <span asp-validation-for="IdSala" class="text-danger"></span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-outline-success" data-save="modal">Adicionar</button>
+            </div>
+        </div>
+    </div>
+</div>

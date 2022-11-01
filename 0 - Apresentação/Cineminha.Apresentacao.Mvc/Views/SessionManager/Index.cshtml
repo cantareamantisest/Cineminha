@@ -1,0 +1,93 @@
+﻿@model ReflectionIT.Mvc.Paging.PagingList<Cineminha.Aplicacao.ViewModels.SessaoViewModel>
+
+@{
+    ViewData["Title"] = "Sessões";
+}
+
+<h1 class="display-2">Sessões</h1>
+
+<div id="placeHolderModal"></div>
+
+<p>
+    <button type="button" class="btn btn-success" data-toggle="ajax-modal" data-target="#addSessionManager" data-url="@Url.Action("Create", "SessionManager")">
+        <span class="fas fa-plus-circle"></span>&nbsp;&nbsp;Adicionar</button>
+</p>
+
+<div class="panel panel-default">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HoraInicio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HoraTermino)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ValorIngresso)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoAnimacao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoAudio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdSala)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdFilme)
+                </th>
+                <th>Operações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoraInicio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoraTermino)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ValorIngresso)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AuxiliarTipoAnimacao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AuxiliarTipoAudio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sala.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Filme.Titulo)
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger" title="Excluir" data-toggle="ajax-modal" data-target="#deleteSessionManager" data-url="@Url.Action($"Delete/{item.IdSessao}", "SessionManager")">
+                            <span class="fas fa-trash-alt"></span>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div>
+        <vc:pager paging-list="@Model"></vc:pager>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    @await Html.PartialAsync("_Notification")
+}

@@ -1,0 +1,43 @@
+﻿@model ReflectionIT.Mvc.Paging.PagingList<Cineminha.Aplicacao.ViewModels.SalaViewModel>
+
+@{
+    ViewData["Title"] = "Salas de Filme";
+}
+
+<h1 class="display-2">Salas</h1>
+
+<div class="panel panel-default">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Assentos)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Assentos)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div>
+        <vc:pager paging-list="@Model"></vc:pager>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

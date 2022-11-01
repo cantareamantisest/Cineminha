@@ -1,0 +1,77 @@
+﻿@model ReflectionIT.Mvc.Paging.PagingList<Cineminha.Aplicacao.ViewModels.FilmeViewModel>
+
+@{
+    ViewData["Title"] = "Filme";
+}
+
+<h1 class="display-2">Filmes</h1>
+
+<div id="placeHolderModal"></div>
+
+<p>
+    <button type="button" class="btn btn-success" data-toggle="ajax-modal" data-target="#addMovieManager" data-url="@Url.Action("Create", "MovieManager")">
+        <span class="fas fa-plus-circle"></span>&nbsp;&nbsp;Adicionar
+    </button>
+</p>
+
+
+<div class="panel panel-default">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Imagem)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Titulo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Duracao)
+                </th>
+                <th>Operações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.Imagem)" class="img-responsive img-thumbnail" style="height:auto; width:75px;" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Titulo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Duracao)
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-info" title="Editar" data-toggle="ajax-modal" data-target="#updateMovieManager" data-url="@Url.Action($"Edit/{item.IdFilme}", "MovieManager")">
+                            <span class="fas fa-edit"></span>
+                        </button>
+
+                        <button type="button" class="btn btn-danger" title="Excluir" data-toggle="ajax-modal" data-target="#deleteMovieManager" data-url="@Url.Action($"Delete/{item.IdFilme}", "MovieManager")">
+                            <span class="fas fa-trash-alt"></span>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div>
+        <vc:pager paging-list="@Model"></vc:pager>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    @await Html.PartialAsync("_Notification")
+}

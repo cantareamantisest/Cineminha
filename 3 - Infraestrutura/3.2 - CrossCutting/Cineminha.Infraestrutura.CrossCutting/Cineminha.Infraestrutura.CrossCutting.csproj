@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\1 - Aplicação\Cineminha.Aplicacao\Cineminha.Aplicacao.csproj" />
+    <ProjectReference Include="..\..\..\2 - Domínio\Cineminha.Dominio\Cineminha.Dominio.csproj" />
+    <ProjectReference Include="..\..\3.1 - Dados\Cineminha.Infraestrutura.Dados\Cineminha.Infraestrutura.Dados.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,24 @@
+﻿@model Cineminha.Aplicacao.ViewModels.FilmeViewModel
+
+<div class="modal fade" id="deleteMovieManager" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="deleteMovieManagerLabel">Excluir Filme</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Delete" method="post" asp-antiforgery="true">
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="IdFilme" />
+                    <h3>Tem certeza que deseja excluir o item selecionado?</h3>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-outline-danger" data-save="modal">Excluir</button>
+            </div>
+        </div>
+    </div>
+</div>

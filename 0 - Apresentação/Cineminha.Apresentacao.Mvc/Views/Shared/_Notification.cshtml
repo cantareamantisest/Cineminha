@@ -1,0 +1,15 @@
+﻿<script>
+    var msg = @(TempData["Message"] != null? Html.Raw(TempData["Message"]) : Html.Raw("undefined"))
+    if (msg) {
+        swal.fire({
+            title: msg.title,
+            text: msg.message,
+            icon: msg.icon,
+            toast: true,
+            position: 'center',
+            timer: 5000,
+            showCloseButton: true,
+            showConfirmButton: false
+        });
+    }
+</script>

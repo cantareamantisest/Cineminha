@@ -1,0 +1,23 @@
+﻿@model Cineminha.Aplicacao.ViewModels.SessaoViewModel
+
+<div class="modal fade" id="deleteSessionManager" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="deleteSessionManagerLabel">Excluir Sessão</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Delete" method="post" asp-antiforgery="true">
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                    <input type="hidden" asp-for="IdSessao" />
+                    <h3>Exclusão da sessão não permitida!</h3>
+                    <h3>Uma sessão só pode ser removida com 10 dias de antecedência.</h3>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>

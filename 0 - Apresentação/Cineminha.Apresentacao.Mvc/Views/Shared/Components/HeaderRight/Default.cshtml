@@ -1,0 +1,22 @@
+﻿<ul class="navbar-nav ml-auto">
+    @{  
+        if (User.Identity.IsAuthenticated)
+        {
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <p>Usuário logado:&nbsp;<strong>@User.Identity.Name</strong>
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Authentication" asp-action="LogoutExecute">Logout</a>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Authentication" asp-action="LoginExecute">Login</a>
+            </li> 
+        } 
+     }  
+</ul>
